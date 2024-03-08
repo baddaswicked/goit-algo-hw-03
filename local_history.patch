@@ -1,0 +1,38 @@
+Index: ex3.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/ex3.py b/ex3.py
+--- a/ex3.py	
++++ b/ex3.py	(date 1709901614188)
+@@ -27,22 +27,28 @@
+ 
+ def normalize_phone(phones):
+     normal_phone=[]
++
+     for phone in phones:
+         if phone.startswith("+38"):
+             new_num = "+"
++
+             for num in phone:
+                 if num.isdigit():
+                     new_num+=num
+                 else:
+                     continue
++
+         else:
+             new_num = "+38"
++
+             for num in phone:
+                 if num.isdigit():
+                     new_num += num
+                 else:
+                     continue
++
+         normal_phone.append(new_num)
++
+     return normal_phone
+ 
+ print("Нормалізовані номери телефонів для SMS-розсилки:", normalize_phone(raw_numbers))
+\ No newline at end of file

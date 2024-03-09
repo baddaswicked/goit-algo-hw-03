@@ -27,26 +27,24 @@ raw_numbers = [
 
 def normalize_phone(phones):
     normal_phone=[]
+    extra_lst=[]
 
-    for phone in phones:
-        if phone.startswith("+38"):
+    for x in phones:
+        new_num = ""
+        for y in x:
+            if y.isdigit():
+                new_num+=y
+        extra_lst.append(new_num)
+
+    for phone in extra_lst:
+        if phone.startswith("38"):
             new_num = "+"
-
             for num in phone:
-                if num.isdigit():
-                    new_num+=num
-                else:
-                    continue
-
+                new_num+=num
         else:
             new_num = "+38"
-
-            for num in phone:
-                if num.isdigit():
-                    new_num += num
-                else:
-                    continue
-
+            for num in phone.removeprefix("38"):
+                new_num += num
         normal_phone.append(new_num)
 
     return normal_phone
